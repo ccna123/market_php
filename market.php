@@ -36,8 +36,53 @@
       </div>
 
     </form>
-    <!-- end search -->
   </div>
+  <!-- end search -->
+
+  <!-- Items -->
+  <br><br><br>
+  <div class="container">
+  <div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-3 col-sm-12">
+      
+      <form method="post"></form>
+      <div id="1" class="card text-dark item_card" style="width: 18rem; min-height: 100%;">
+        <img src="img" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">title</h5>
+        </div>
+        <hr>
+      
+        <div class="container mb-4">
+          <div class="star-widget text-center">
+            <span class="stars">
+              <i class="bi bi-star-fill h4"></i>
+              <i class="bi bi-star-fill h4"></i>
+              <i class="bi bi-star-fill h4"></i>
+              <i class="bi bi-star-fill h4"></i>
+              <i class="bi bi-star-fill h4"></i>
+            </span>
+          </div>
+          <input type="hidden" name="" class="avg_rating" value="4">
+        </div>
+
+        <div class="text-center">
+          <form class="info-form py-4" method="POST">
+            
+            <button type="submit" onclick="window.location.href='/info/3x3/'" class="btn btn-primary w-75 mb-4 fw-bold" name="get_item_info" value="3x3">
+              Info
+            </button>
+            <button type="submit" id="1" class="add_inventory_btn btn btn-success w-75 mb-4 fw-bold" name="item_name" value="3x3" data-item-id="1">
+              Add Pocket
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <!-- end Items -->
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
