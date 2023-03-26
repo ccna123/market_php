@@ -76,10 +76,10 @@
         <div class="text-center">
           <form class="info-form py-4" method="POST">
             
-            <button type="submit" onclick="window.location.href='/info/3x3/'" class="btn btn-primary w-75 mb-4 fw-bold" name="get_item_info" value="3x3">
+            <a type="submit" href="item_info.php/?item_id=<?=$row["id"] ?>" class="btn btn-primary w-75 mb-4 fw-bold">
               Info
-            </button>
-            <button type="submit" id="1" class="add_inventory_btn btn btn-success w-75 mb-4 fw-bold" name="item_name" value="3x3" data-item-id="1">
+            </a>
+            <button type="submit" id="<?=$row["id"] ?>" class="add_inventory_btn btn btn-success w-75 mb-4 fw-bold" name="item_name" value="3x3" data-item-id="1">
               Add Pocket
             </button>
           </form>

@@ -21,13 +21,13 @@
       <div class="collapse navbar-collapse text-light" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
           <li class="nav-item">
-            <a class="nav-link text-light fw-bold" aria-current="page" href="home.php">Home</a>
+            <a class="nav-link text-light fw-bold" aria-current="page" href="/market_php/home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light fw-bold" href="market.php">Market</a>
+            <a class="nav-link text-light fw-bold" href="/market_php/market.php">Market</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light fw-bold" href="history.php">History</a>
+            <a class="nav-link text-light fw-bold" href="/market_php/history.php">History</a>
           </li>
         </ul>
         <?php include("dbconnect.php"); ?>
@@ -42,7 +42,7 @@
           <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="market.php">Welcome, <?= $row["username"] ?> </a>
+              <a class="nav-link text-light fw-bold" href="dashboard.php">Welcome, <?= $row["username"] ?> </a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light fw-bold" href="process.php/?logout=<?=$_SESSION["user_id"] ?>">Logout</a>
@@ -52,10 +52,10 @@
           <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="login.php">Login</a>
+              <a class="nav-link text-light fw-bold" href="/market_php/login.php">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="register.php">Register</a>
+              <a class="nav-link text-light fw-bold" href="/market_php/register.php">Register</a>
             </li>
           </ul>
         <?php endif ?>
