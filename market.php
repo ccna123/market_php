@@ -1,5 +1,5 @@
 <!doctype html>
-<?php session_start(); ?>
+<?php include("process.php"); ?>
 <html lang="en">
 
 <head>
@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bootstrap demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -40,16 +41,22 @@
   <!-- end search -->
 
   <!-- Items -->
-  <br><br><br>
+ 
   <div class="container">
   <div class="row">
+    <!-- col item -->
+    <?php while ($row = $result -> fetch_assoc()): ?>
     <div class="col-xl-3 col-lg-4 col-md-3 col-sm-12">
       
       <form method="post"></form>
+      
+
       <div id="1" class="card text-dark item_card" style="width: 18rem; min-height: 100%;">
-        <img src="img" class="card-img-top" alt="...">
+        <img src="<?=$row["image_url"] ?>" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">title</h5>
+          <h5 class="card-title">
+            <?=$row["name"] ?>
+          </h5>
         </div>
         <hr>
       
@@ -79,6 +86,33 @@
         </div>
       </div>
     </div>
+    <?php endwhile ?>
+    <!-- end col -->
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example" class="my-5">
+      <h4 class="text-center mb-3">Pages 1 of <?=$total_pages?></h4>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="?page=1" tabindex="-1">First</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" tabindex="-1">Prvious</a>
+        </li>
+        
+        <?php for ($i=1; $i <= $total_pages; $i++): ?>
+          <li class="page-item"><a class="page-link" href="?page=<?=$i?>"><?=$i?></a></li>
+        <?php endfor?>
+        
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page=<?=$total_pages?>">Last</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- end pagination -->
   </div>
   </div>
   

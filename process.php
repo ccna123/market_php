@@ -3,6 +3,21 @@
 session_start();
 include "dbconnect.php";
 
+$start = 0;
+$rows_per_pages = 3;
+
+$records = $conn->query("SELECT * FROM item");
+$total_rows = $records->num_rows;
+
+$total_pages = ceil($total_rows / $rows_per_pages);
+
+if (isset($_GET["page"])) {
+    $p = $_GET["page"] - 1;
+    $start = $p * $rows_per_pages;
+}
+$sql = "SELECT * FROM item LIMIT $start, $rows_per_pages";
+$result = mysqli_query($conn, $sql);
+
 function check_valid($row, $username, $email, $password, $confirm_pass, $errors)
 {
     $errors = array();
@@ -46,7 +61,7 @@ if (isset($_POST["create"])) {
         $_SESSION["register_errors"] = $errors;
         header("location: register.php");
     }
-} 
+}
 if (isset($_POST["login"])) {
 
     $errors = array();
@@ -56,7 +71,7 @@ if (isset($_POST["login"])) {
     $sql = "SELECT * FROM user_data WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    
+
     if (!$row) {
         $errors["log_username"] = "Wrong username";
     } else {
@@ -68,14 +83,12 @@ if (isset($_POST["login"])) {
     if (count($errors) > 0) {
         $_SESSION["log_err"] = $errors;
         header("location: login.php");
-        
     } else {
         $_SESSION["log_mess"] = "Login sucessfully";
         $_SESSION["msg_type"] = "success";
         $_SESSION["user_id"] = $row["id"];
         header("location: market.php");
     }
-    
 }
 
 if (isset($_GET["logout"])) {
@@ -84,3 +97,5 @@ if (isset($_GET["logout"])) {
     unset($_SESSION["user_id"]);
     header("location: http://localhost:8080/market_php/home.php");
 }
+
+
