@@ -1,5 +1,5 @@
 <!doctype html>
-
+<?php session_start();?>
 <html lang="en">
 
 <head>
@@ -31,7 +31,7 @@
 
   <div class="container card text-center mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient">
 
-    <form action="process.php" method="POST">
+    <form action="login_process.php" method="POST">
 
       <?php if (isset($_SESSION["log_err"])) {
 

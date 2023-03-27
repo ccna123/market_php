@@ -24,7 +24,7 @@
             <a class="nav-link text-light fw-bold" aria-current="page" href="/market_php/home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light fw-bold" href="/market_php/market.php">Market</a>
+            <a class="nav-link text-light fw-bold" href="/market_php/market.php/?page=1">Market</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light fw-bold" href="/market_php/history.php">History</a>
@@ -45,7 +45,10 @@
               <a class="nav-link text-light fw-bold" href="dashboard.php">Welcome, <?= $row["username"] ?> </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="process.php/?logout=<?=$_SESSION["user_id"] ?>">Logout</a>
+              <form action="logout_process.php" method="post">
+                <input type="hidden" name="logout">
+                <button type="submit" class="nav-link text-light fw-bold">Logout</button>
+              </form>
             </li>
           </ul>
         <?php else : ?>

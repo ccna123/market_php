@@ -1,5 +1,4 @@
 <!doctype html>
-<?php include("process.php"); ?>
 <html lang="en">
 
 <head>
@@ -14,9 +13,13 @@
   <?php include("navbar.php") ?>
 
   <?php
+    include("dbconnect.php");
+    $item_id = $_GET["item_id"];
+    $result = $conn -> query("SELECT * FROM item WHERE id='$item_id'");
     $row = $result -> fetch_assoc();
   ?>
-  <div class="container text-center">
+  <br><br><br>
+  <div class="container text-center mt-5">
     <div class="row">
         <!-- item -->
         <div class="col-12 col-md-6 col-lg-6">

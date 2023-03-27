@@ -8,7 +8,7 @@
   </head>
   <body>
   <?php include("navbar.php");?>
-  <?php include("process.php") ?>
+  <br><br>
   <!-- !-- message -->
   <?php
   if (isset($_SESSION["log_mess"])) : ?>

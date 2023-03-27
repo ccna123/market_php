@@ -11,7 +11,6 @@
 <body>
 
   <?php include("navbar.php")?>
-  <?php include("process.php") ?>
   <!-- !-- message -->
   <?php
   if (isset($_SESSION["message"])) : ?>
@@ -35,7 +34,7 @@
   ?>
   <div class="container text-center card mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient"">
 
-    <form action=" process.php" method="POST">
+    <form action="register_process.php" method="POST">
 
     <h1 class="h3 mb-3 font-weight-normal">
       Please Create your Account
@@ -92,9 +91,9 @@
 
     <div class="checkbox mb-3">
       <h6>Already have an Account?</h6>
-      <a class="btn btn-sm btn-secondary" href="login.php">Login</a>
+      <a class="btn btn-sm btn-secondary" href="login_process.php">Login</a>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" name="create">Create Account</button>
+    <a class="btn btn-lg btn-primary btn-block" href="register_process.php">Create Account</a>
     </form>
   </div>
 
