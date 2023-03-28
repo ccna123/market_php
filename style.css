@@ -7,3 +7,41 @@
     color: red;
     font-weight: bold;
 }
+.custom-tooltip{
+    --bs-tooltip-bg: var(--bs-success);
+}
+
+.container .star-widget input{
+    display: none;
+}
+
+.star-widget {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+}
+
+.star-widget label{
+    font-size: 1.5rem;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.star-widget > label:hover::before,
+.star-widget > label:hover ~ label::before{
+    color: gold;
+}
+
+input:checked ~ label{
+    color: gold;
+}
+
+input#rate-1:checked ~ label{
+    color: gold;
+    text-shadow: 0 0 20px gold;
+}
+
+.filled{
+    color: gold;
+}

@@ -20,10 +20,10 @@
         }
     
         if (count($errors) > 0) {
-            $_SESSION["log_err"] = $errors;
+            $_SESSION["mess"] = $errors;
             header("location: login.php");
         } else {
-            $_SESSION["log_mess"] = "Login sucessfully";
+            $_SESSION["mess"] = "Login sucessfully";
             $_SESSION["msg_type"] = "success";
             $_SESSION["user_id"] = $row["id"];
             header("location: market.php");

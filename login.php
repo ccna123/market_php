@@ -12,7 +12,6 @@
 
 <body>
   <?php include("navbar.php")?>
-  <?php include("process.php") ?>
 
   <!-- message -->
   <?php

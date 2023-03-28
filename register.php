@@ -91,9 +91,9 @@
 
     <div class="checkbox mb-3">
       <h6>Already have an Account?</h6>
-      <a class="btn btn-sm btn-secondary" href="login_process.php">Login</a>
+      <a class="btn btn-sm btn-secondary" href="login.php">Login</a>
     </div>
-    <a class="btn btn-lg btn-primary btn-block" href="register_process.php">Create Account</a>
+    <button type="submit" name="register" class="btn btn-lg btn-primary btn-block">Create Account</button>
     </form>
   </div>
 

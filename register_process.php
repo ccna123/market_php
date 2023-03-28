@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("dbconnect.php");
     function check_valid($row, $username, $email, $password, $confirm_pass, $errors)
 {
@@ -19,7 +20,7 @@
 
     
     
-    if (isset($_POST["create"])) {
+    if (isset($_POST["register"])) {
 
         $username = trim($_POST["username"]);
         $email = trim($_POST["email"]);
