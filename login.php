@@ -15,13 +15,13 @@
 
   <!-- message -->
   <?php
-  if (isset($_SESSION["message"])) : ?>
+  if (isset($_SESSION["mess"])) : ?>
     <div class="">
       <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
-        <?php echo $_SESSION["message"];  ?>
+        <?php echo $_SESSION["mess"];  ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-      <?php unset($_SESSION["message"]); ?>
+      <?php unset($_SESSION["mess"]); ?>
     </div>
 
   <?php endif ?>
@@ -32,12 +32,6 @@
 
     <form action="login_process.php" method="POST">
 
-      <?php if (isset($_SESSION["log_err"])) {
-
-        $er = $_SESSION["log_err"];
-        unset($_SESSION["log_err"]);
-      }
-      ?>
       <h1 class="h3 mb-3 font-weight-normal">
         Please sign in
       </h1>
@@ -48,22 +42,13 @@
         User Name
       </label>
       <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-      <?php if (isset($er["log_username"])) : ?>
-        <span class="mt-3 error">
-          <?= $er["log_username"] ?>
-        </span>
-      <?php endif ?>
       <br>
 
       <label for="inputPassword" class="sr-only mb-3">
         Password
       </label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-      <?php if (isset($er["log_pass"])) : ?>
-        <span class="mt-3 error">
-          <?= $er["log_pass"] ?>
-        </span>
-      <?php endif ?>
+    
       <br>
 
       <div class="checkbox mb-3">
