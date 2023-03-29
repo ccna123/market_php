@@ -4,7 +4,7 @@
     if (isset($_POST["login"])) {
 
         $errors = array();
-        $username = trim($_POST["username"]);
+        $username = htmlspecialchars(trim($_POST["username"]));
         $password = $_POST["password"];
     
         $sql = "SELECT * FROM user_data WHERE username='$username'";

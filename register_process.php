@@ -22,8 +22,8 @@
     
     if (isset($_POST["register"])) {
 
-        $username = trim($_POST["username"]);
-        $email = trim($_POST["email"]);
+        $username = htmlspecialchars(trim($_POST["username"]));
+        $email = htmlspecialchars(trim($_POST["email"]));
         $password = $_POST["password"];
         $confirm_pass = $_POST["confirm_password"];
     

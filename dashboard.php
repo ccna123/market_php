@@ -12,16 +12,7 @@
 
 <body>
   <?php include("navbar.php") ?>
-  <?php
-  if (isset($_SESSION["mess"])) : ?>
-    <div>
-      <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
-        <?php echo $_SESSION["mess"];  ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <?php unset($_SESSION["mess"]); ?>
-    </div>
-  <?php endif ?>
+  <div id="mess_section" class="fixed-top mt-5"></div>
 
   <br><br>
   <!-- tab -->

@@ -16,15 +16,14 @@ $(document).ready(function () {
             data: {
                 item_id: item_id
             },
-            dataType: "json",
-            success: function (response) {
+            dataType: "html",
+            success: function (mess) {
                 
                 $('.item_card[data-item-id="' + item_id + '"]').remove();
-                $("#tt").attr("title", response.message);
-                $("#tt").tooltip("dispose").tooltip("show");
+                $("#mess_section").append(mess);
                 setTimeout(() => {
-                    $("#tt").tooltip("disable").tooltip("hide");
-                }, 2500);
+                    $("#mess_section").empty();
+                }, 3000);
             },
             error: function (xhr, status, error) {  
                 console.log("Error: " + error);

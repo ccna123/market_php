@@ -1,7 +1,7 @@
 <?php
     session_start();
     include("dbconnect.php");
-
+    $mess = "";
     if (isset($_POST["item_id"])) {
         $item_id = $_POST["item_id"];
         $user_id = $_SESSION["user_id"];
@@ -14,8 +14,14 @@
             "message" => "Cancel ".$row["name"]." successfully",
             "status" => "Success"
         );
-        header("Content-type: application/json; charset=UTF-8");
-        echo json_encode($data);
+        $mess .='<div>
+        <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+          Cancel '.$row["name"].' successfully
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>'; 
+
+        echo $mess;
         exit;
     }
 ?>

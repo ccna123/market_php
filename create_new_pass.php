@@ -15,13 +15,13 @@
 
   <!-- message -->
   <?php
-  if (isset($_SESSION["message"])) : ?>
+  if (isset($_SESSION["new_pass_message"])) : ?>
     <div class="">
       <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
-        <?php echo $_SESSION["message"];  ?>
+        <?php echo $_SESSION["new_pass_message"];  ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-      <?php unset($_SESSION["message"]); ?>
+      <?php unset($_SESSION["new_pass_message"]); ?>
     </div>
 
   <?php endif ?>
@@ -30,56 +30,30 @@
 
   <div class="container card text-center mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient">
 
-    <form action="login_process.php" method="POST">
+    <form action="create_new_pass_process.php" method="POST">
 
-      <?php if (isset($_SESSION["log_err"])) {
-
-        $er = $_SESSION["log_err"];
-        unset($_SESSION["log_err"]);
-      }
-      ?>
       <h1 class="h3 mb-3 font-weight-normal">
-        Please sign in
+        Enter new password
       </h1>
 
       <br>
 
-      <label for="inputUsername" class="sr-only mb-3">
-        User Name
-      </label>
-      <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-      <?php if (isset($er["log_username"])) : ?>
-        <span class="mt-3 error">
-          <?= $er["log_username"] ?>
-        </span>
-      <?php endif ?>
-      <br>
-
       <label for="inputPassword" class="sr-only mb-3">
-        Password
+        New password
       </label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-      <?php if (isset($er["log_pass"])) : ?>
-        <span class="mt-3 error">
-          <?= $er["log_pass"] ?>
-        </span>
-      <?php endif ?>
+      <input type="password" id="inputPassword" class="form-control" placeholder="New Password" name="password" required autofocus>
+    
       <br>
 
-      <div class="checkbox mb-3">
-        <h6>Don't Have an account? </h6>
-        <a class="btn btn-sm btn-secondary" href="register.php">Register</a>
+      <label for="inputConfirmPass" class="sr-only mb-3">
+        Confirm password
+      </label>
+      <input type="password" id="inputConfirmPass" class="form-control" placeholder="Confirm Password" name="confirm_pass" required>
+      <br>
 
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Save</button>
     </form>
-    <form action="" method="post">
-      <input type="hidden" name="username" value="guest">
-      <input type="hidden" name="password" value="guest123">
-      <button type="submit" class="btn btn-success mt-4">Login as Guest</button>
-    </form>
-    <a href="create_new_pass.php" class="mt-4">Change Password ?</a>
-    <a href="reset_pass.php" class="mt-4">Forgot Password ?</a>
+    <a class="mt-3" href="login.php">Login</a>
   </div>
   </div>
 

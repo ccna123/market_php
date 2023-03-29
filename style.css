@@ -45,3 +45,7 @@ input#rate-1:checked ~ label{
 .filled{
     color: gold;
 }
+
+a{
+    text-decoration: none;
+}

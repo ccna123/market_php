@@ -9,7 +9,6 @@ $(document).ready(function () {
         e.preventDefault();
         let item_id = $(this).data("item-id");
         let item_name = $(this).val();
-        const base_url = window.location.href.split("/").slice(0,4).join("/");
         console.log(item_name);
         $.ajax({
             type: "post",
@@ -17,13 +16,13 @@ $(document).ready(function () {
             data: {
                 item_id: item_id
             },
-            dataType: "json",
-            success: function (response) {
-                $("#tt").attr("title", "Add ${item_name} successfully");
-                $("#tt").tooltip("dispose").tooltip("show");
+            dataType: "html",
+            success: function (mess) {
+                $("#mess_section").append(mess);
                 setTimeout(() => {
-                    $("#tt").tooltip("disable").tooltip("hide");
-                }, 2500);
+                    $("#mess_section").empty();
+                }, 3000);
+               
             },
             error: function (xhr, status, error) {  
                 console.log("Error: " + error);

@@ -16,7 +16,7 @@
   <!-- message -->
   <?php
   if (isset($_SESSION["message"])) : ?>
-    <div class="">
+    <div>
       <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
         <?php echo $_SESSION["message"];  ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -30,56 +30,29 @@
 
   <div class="container card text-center mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient">
 
-    <form action="login_process.php" method="POST">
+    <form action="reset_pass_process.php" method="POST">
 
-      <?php if (isset($_SESSION["log_err"])) {
-
-        $er = $_SESSION["log_err"];
-        unset($_SESSION["log_err"]);
-      }
-      ?>
       <h1 class="h3 mb-3 font-weight-normal">
         Please sign in
       </h1>
 
       <br>
 
-      <label for="inputUsername" class="sr-only mb-3">
-        User Name
+      <label for="inputEmail" class="sr-only mb-3">
+        Email
       </label>
-      <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-      <?php if (isset($er["log_username"])) : ?>
-        <span class="mt-3 error">
-          <?= $er["log_username"] ?>
-        </span>
-      <?php endif ?>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email" name="email" required autofocus>
+    
       <br>
 
-      <label for="inputPassword" class="sr-only mb-3">
-        Password
+      <label for="inputConfirmEmail" class="sr-only mb-3">
+        Confirm Email
       </label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-      <?php if (isset($er["log_pass"])) : ?>
-        <span class="mt-3 error">
-          <?= $er["log_pass"] ?>
-        </span>
-      <?php endif ?>
+      <input type="email" id="inputConfirmEmail" class="form-control" placeholder="Confirm Email" name="confirm_email" required>
       <br>
 
-      <div class="checkbox mb-3">
-        <h6>Don't Have an account? </h6>
-        <a class="btn btn-sm btn-secondary" href="register.php">Register</a>
-
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Submit</button>
     </form>
-    <form action="" method="post">
-      <input type="hidden" name="username" value="guest">
-      <input type="hidden" name="password" value="guest123">
-      <button type="submit" class="btn btn-success mt-4">Login as Guest</button>
-    </form>
-    <a href="create_new_pass.php" class="mt-4">Change Password ?</a>
-    <a href="reset_pass.php" class="mt-4">Forgot Password ?</a>
   </div>
   </div>
 
