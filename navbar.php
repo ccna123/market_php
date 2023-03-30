@@ -24,16 +24,23 @@
           <li class="nav-item">
             <a class="nav-link text-light fw-bold" aria-current="page" href="/market_php/home.php">Home</a>
           </li>
+          <?php if (isset($_SESSION["is_login"]) and $_SESSION["is_login"] ===true ) : ?>
           <li class="nav-item">
             <a class="nav-link text-light fw-bold" href="/market_php/market.php">Market</a>
           </li>
+          <?php else:?>
+            
+            <li class="nav-item">
+              <a class="nav-link text-light fw-bold" href="/market_php/login.php">Market</a>
+            </li>
+          <?php endif ?>
           <li class="nav-item">
             <a class="nav-link text-light fw-bold" href="/market_php/history.php">History</a>
           </li>
         </ul>
         <?php include("dbconnect.php"); ?>
         <!-- check if user log in  -->
-        <?php if (isset($_SESSION["user_id"])) : ?>
+        <?php if (isset($_SESSION["user_id"])): ?>
           <?php
           $user_id = $_SESSION["user_id"];
           $sql = "SELECT username FROM user_data WHERE id='$user_id'";
@@ -69,8 +76,6 @@
       </div>
 
   </nav>
-
-
 
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 

@@ -12,7 +12,6 @@
 
 <body>
   <?php include("navbar.php")?>
-
   <!-- message -->
   <?php
   if (isset($_SESSION["mess"])) : ?>
@@ -33,7 +32,7 @@
     <form action="login_process.php" method="POST">
 
       <h1 class="h3 mb-3 font-weight-normal">
-        Please sign in
+        Please log in
       </h1>
 
       <br>
@@ -57,11 +56,6 @@
 
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
-    </form>
-    <form action="" method="post">
-      <input type="hidden" name="username" value="guest">
-      <input type="hidden" name="password" value="guest123">
-      <button type="submit" class="btn btn-success mt-4">Login as Guest</button>
     </form>
     <a href="create_new_pass.php" class="mt-4">Change Password ?</a>
     <a href="reset_pass.php" class="mt-4">Forgot Password ?</a>

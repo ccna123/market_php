@@ -3,8 +3,9 @@ session_start();
 if (isset($_POST["logout"])) {
     $_SESSION["mess"] = "Logout sucessfully";
     $_SESSION["msg_type"] = "info";
+    $_SESSION["is_login"] = false;
     unset($_SESSION["user_id"]);
-    header("location: http://localhost:8080/market_php/home.php");
+    header("location: home.php");
     exit();
 }
 

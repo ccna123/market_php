@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<? session_start(); ?>
+<?php session_start(); ?>
 
 <head>
   <meta charset="utf-8">
@@ -76,7 +76,6 @@
   </div>
 
   <!-- end search -->
-
   <!-- Items -->
 
   <div class="container">
@@ -107,7 +106,13 @@
               </div>
               <input type="hidden" name="" class="avg_rating" value="4">
             </div>
-
+            <!-- level -->
+            <div class="text-center text-danger fw-bold">
+              <h3>
+                Level <?=$row["level"] ?>
+              </h3>
+            </div>
+            <!-- end level -->
             <div class="text-center">
 
               <form class="info-form py-4" method="POST" action="add_process.php">
