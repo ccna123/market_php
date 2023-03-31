@@ -1,14 +1,5 @@
-<!doctype html>
 <?php session_start();?>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include("header.php"); ?>
 
 <body>
   <?php include("navbar.php")?>
@@ -33,25 +24,25 @@
     <form action="reset_pass_process.php" method="POST">
 
       <h1 class="h3 mb-3 font-weight-normal">
-        Please sign in
+        パスワード再発行
       </h1>
 
       <br>
 
       <label for="inputEmail" class="sr-only mb-3">
-        Email
+        メール
       </label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" name="email" required autofocus>
+      <input type="email" id="inputEmail" class="form-control" placeholder="メール" name="email" required autofocus>
     
       <br>
 
       <label for="inputConfirmEmail" class="sr-only mb-3">
-        Confirm Email
+        メール確認用
       </label>
-      <input type="email" id="inputConfirmEmail" class="form-control" placeholder="Confirm Email" name="confirm_email" required>
+      <input type="email" id="inputConfirmEmail" class="form-control" placeholder="メール再確認" name="confirm_email" required>
       <br>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Submit</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">送信</button>
     </form>
   </div>
   </div>

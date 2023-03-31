@@ -12,7 +12,7 @@
     );
 ?>
 <div class="container card">
-    <h1 class="mb-4 mt-3" style="color: #020603;">Customer Review</h1>
+    <h1 class="mb-4 mt-3" style="color: #020603;">コメント</h1>
     <?php while ($row = $records -> fetch_assoc()): ?>  
         <div class="row">
             <div class="col-12" style="text-align: left;">

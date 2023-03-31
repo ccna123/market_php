@@ -38,12 +38,12 @@
                             </div>
                             <div class="text-center text-danger fw-bold">
                                 <h3>
-                                    Level <?= $row["level"] ?>
+                                    レベル <?= $row["level"] ?>
                                 </h3>
                             </div>
                             <hr>
                             <div>
-                                <h2 class="text-danger fw-bold">Click links below here to buy:</h2>
+                                <h2 class="text-danger fw-bold">購入先のリンク</h2>
                                 <div>
                                     <h4>TORIBO</h4><a href="https://store.tribox.com/" target="_blank">https://store.tribox.com/</a>
                                     <h4>Amazon</h4><a href="https://www.amazon.co.jp" target="_blank">https://www.amazon.co.jp/</a>
@@ -91,10 +91,10 @@
 
                         <div class="form-group mt-4" style="background-color: #A3BB98;">
 
-                            <textarea name="review_area" class="form-control" style="resize: none;" id="review_area" rows="4" placeholder="Write your review"></textarea>
+                            <textarea name="review_area" class="form-control" style="resize: none;" id="review_area" rows="4" placeholder="コメント入力"></textarea>
                         </div>
                         <input type="hidden" name="review_item_id" value="<?= $row["id"] ?>">
-                        <button id="sub-btn" type="submit" class="btn btn-primary mt-5 w-50" data-item-id="<?= $row["id"] ?>">Submit</button>
+                        <button id="sub-btn" type="submit" class="btn btn-primary mt-5 w-50" data-item-id="<?= $row["id"] ?>">送信</button>
                     </form>
                 </div>
 

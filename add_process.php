@@ -14,7 +14,7 @@
 
         $mess .='<div>
         <div class="alert alert-success alert-dismissible fade show w-100 " role="alert">
-          Add '.$row["name"].' successfully
+           '.$row["name"].'をポケットに入れた
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>'; 

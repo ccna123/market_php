@@ -1,14 +1,5 @@
-<!doctype html>
 <?php session_start();?>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include("header.php"); ?>
 
 <body>
   <?php include("navbar.php")?>
@@ -32,33 +23,33 @@
     <form action="login_process.php" method="POST">
 
       <h1 class="h3 mb-3 font-weight-normal">
-        Please log in
+        ログイン
       </h1>
 
       <br>
 
       <label for="inputUsername" class="sr-only mb-3">
-        User Name
+        ユーザ名
       </label>
-      <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
+      <input type="text" id="inputUsername" class="form-control" placeholder="ユーザ名" name="username" required autofocus>
       <br>
 
       <label for="inputPassword" class="sr-only mb-3">
-        Password
+        パスワード
       </label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" name="password" required>
     
       <br>
 
       <div class="checkbox mb-3">
-        <h6>Don't Have an account? </h6>
-        <a class="btn btn-sm btn-secondary" href="register.php">Register</a>
+        <h6>アカウントを持っていないの？ </h6>
+        <a class="btn btn-sm btn-secondary" href="register.php">登録</a>
 
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">ログイン</button>
     </form>
-    <a href="create_new_pass.php" class="mt-4">Change Password ?</a>
-    <a href="reset_pass.php" class="mt-4">Forgot Password ?</a>
+    <a href="create_new_pass.php" class="mt-4">パスワードを変更</a>
+    <a href="reset_pass.php" class="mt-4">パスワードを忘れた？</a>
   </div>
   </div>
 

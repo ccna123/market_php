@@ -10,15 +10,15 @@ function check_valid($row, $username, $email, $password, $confirm_pass, $errors)
 {
     $errors = array();
     if ($row["username"] != null && $row["username"] === $username) {
-        $errors["username"] =  "Username already exists";
+        $errors["username"] =  "このユーザ名が登録された。";
     }
 
     if ($row["email"] != null && $row["email"] === $email) {
-        $errors["email"] = "Email already exists";
+        $errors["email"] = "このメールが登録された。";
     }
 
     if ($password != $confirm_pass) {
-        $errors["pass"] = "Password do not match";
+        $errors["pass"] = "パスワードが一致していない";
     }
     return $errors;
 }
@@ -60,16 +60,16 @@ if (isset($_POST["register"])) {
         $mail->setFrom("tnguyen24494@gmail.com", "ADMIN");
         $mail->addAddress($email);
 
-        $mail->Subject = "Member Token";
+        $mail->Subject = "トークン発行";
         $message = "
-                    Hello. This mail is from rubik-collections.com
-                    Please use this token as a ticket for discount when buying products
+                    こんにちは。. こちらはルービックコレクションのサイトからのメールです。
+                    商品の割引等の得を得られるため、下記のトークンを発行します。
                     $token
                 ";
         $mail->Body = $message;
         $mail->send();
 
-        $_SESSION["message"] = "Register successfully";
+        $_SESSION["message"] = "登録が成功した";
         $_SESSION["msg_type"] = "success";
         header("location: login.php");
     } else {

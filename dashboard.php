@@ -1,14 +1,5 @@
-<!doctype html>
 <?php session_start(); ?>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include("header.php");?>
 
 <body>
   <?php include("navbar.php") ?>
@@ -17,11 +8,11 @@
   <br><br>
   <!-- tab -->
   <div class="container">
-    <h1 class="m-5 fw-bold header_page_title fw-bolder">YOUR ITEMS</h1>
+    <h1 class="m-5 fw-bold header_page_title fw-bolder">ポケット</h1>
     <hr>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pocket-tab" data-bs-toggle="tab" data-bs-target="#pocket" type="button" role="tab" aria-controls="pocket" aria-selected="true">Pocket</button>
+        <button class="nav-link active" id="pocket-tab" data-bs-toggle="tab" data-bs-target="#pocket" type="button" role="tab" aria-controls="pocket" aria-selected="true">ポケット</button>
       </li>
     </ul>
 
@@ -67,10 +58,10 @@
                     <form class="info-form py-4" method="POST" action="cancel_process.php">
 
                       <a type="submit" href="/market_php/item_info.php?item_id=<?= $row["id"] ?>" class="btn btn-primary w-75 mb-4 fw-bold">
-                        Info
+                        詳細
                       </a>
                       <button type="submit" id="<?= $row["id"] ?>" class="cancel_inventory_btn btn btn-danger w-75 mb-4 fw-bold" name="item_id" value="<?= $row["id"] ?>" data-item-id="<?= $row["id"] ?>">
-                        Cancel
+                        キャンセル
                       </button>
 
                     </form>

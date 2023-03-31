@@ -12,12 +12,12 @@
         $row = $record -> fetch_assoc();
     
        if (!$row or !password_verify($password, $row["password"])) {
-            $_SESSION["mess"] = "Wrong username or password";
+            $_SESSION["mess"] = "ユーザ名かパスワードを再度確認してください。";
             $_SESSION["msg_type"] = "danger";
             header("location: login.php");
 
        }else {
-            $_SESSION["mess"] = "Login sucessfully";
+            $_SESSION["mess"] = "ログインが成功した。";
             $_SESSION["msg_type"] = "success";
             $_SESSION["user_id"] = $row["id"];
             $_SESSION["is_login"] = true;

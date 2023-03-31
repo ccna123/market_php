@@ -1,14 +1,5 @@
-<!doctype html>
 <?php session_start();?>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include("header.php"); ?>
 
 <body>
   <?php include("navbar.php")?>
@@ -39,21 +30,21 @@
       <br>
 
       <label for="inputPassword" class="sr-only mb-3">
-        New password
+        新パスワード
       </label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="New Password" name="password" required autofocus>
+      <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" name="password" required autofocus>
     
       <br>
 
       <label for="inputConfirmPass" class="sr-only mb-3">
-        Confirm password
+        パスワード再入力
       </label>
-      <input type="password" id="inputConfirmPass" class="form-control" placeholder="Confirm Password" name="confirm_pass" required>
+      <input type="password" id="inputConfirmPass" class="form-control" placeholder="パスワード再入力" name="confirm_pass" required>
       <br>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Save</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">送信</button>
     </form>
-    <a class="mt-3" href="login.php">Login</a>
+    <a class="mt-3" href="login.php">ログイン</a>
   </div>
   </div>
 

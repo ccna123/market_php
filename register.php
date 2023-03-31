@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include("header.php"); ?>
 
 <body>
 
@@ -37,15 +29,15 @@
     <form action="register_process.php" method="POST">
 
     <h1 class="h3 mb-3 font-weight-normal">
-      Please Create your Account
+      アカウント作成
     </h1>
 
     <!-- Form Fields -->
     <!-- username -->
     <label for="inputUsername" class="sr-only mb-3">
-      User Name
+      ユーザ名
     </label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
+    <input type="text" id="inputUsername" class="form-control" placeholder="ユーザ名" name="username" required autofocus>
     <?php if (isset($er["username"])) : ?>
       <span class="mt-3 error">
         <?= $er["username"] ?>
@@ -55,9 +47,9 @@
 
     <!-- email -->
     <label for="inputEmail" class="sr-only mb-3">
-      Email
+      メール
     </label>
-    <input type="email" id="inputEmai" class="form-control" placeholder="Email" name="email" required autofocus>
+    <input type="email" id="inputEmai" class="form-control" placeholder="メール" name="email" required autofocus>
 
     <?php if (isset($er["email"])) : ?>
       <span class="mt-3 error">
@@ -68,9 +60,9 @@
 
     <!-- password -->
     <label for="inputPassword1" class="sr-only mb-3">
-      Password
+      パスワード
     </label>
-    <input type="password" id="inputPassword1" class="form-control" placeholder="Password" name="password" required autofocus>
+    <input type="password" id="inputPassword1" class="form-control" placeholder="パスワード" name="password" required autofocus>
     <?php if (isset($er["pass"])) : ?>
       <span class="mt-3 error">
         <?= $er["pass"] ?>
@@ -79,9 +71,9 @@
     <br>
 
     <label for="inputPassword2" class="sr-only mb-3">
-      Password Confirmation
+      パスワード確認用
     </label>
-    <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" name="confirm_password" required autofocus>
+    <input type="password" id="inputPassword2" class="form-control" placeholder="パスワード再入力" name="confirm_password" required autofocus>
     <?php if (isset($er["pass"])) : ?>
       <span class="mt-3 error">
         <?= $er["pass"] ?>
@@ -90,10 +82,10 @@
     <br>
 
     <div class="checkbox mb-3">
-      <h6>Already have an Account?</h6>
-      <a class="btn btn-sm btn-secondary" href="login.php">Login</a>
+      <h6>アカウントを既に持っている？</h6>
+      <a class="btn btn-sm btn-secondary" href="login.php">ログイン</a>
     </div>
-    <button type="submit" name="register" class="btn btn-lg btn-primary btn-block">Create Account</button>
+    <button type="submit" name="register" class="btn btn-lg btn-primary btn-block">アカウント作成</button>
     </form>
   </div>
 

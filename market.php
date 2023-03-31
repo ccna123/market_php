@@ -64,11 +64,11 @@
     <form class="form-inline my-2 my-lg-0" method="GET">
       <div class="row">
         <div class="col-lg-8 col-md-12 my-auto">
-          <input class="form-control mr-sm-2 me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 3rem;" name="search_item" value="">
+          <input class="form-control mr-sm-2 me-2" type="search" placeholder="検索" aria-label="Search" style=" height: 3rem;" name="search_item" value="">
         </div>
         <div class="col-lg-4 col-md-12">
           <input type="hidden" name="page" value="<?= $page ?>">
-          <button class="btn btn-success my-2 my-sm-4 w-100" type="submit" style="height: 3rem;">Search</button>
+          <button class="btn btn-success my-2 my-sm-4 w-100" type="submit" style="height: 3rem;">検索</button>
         </div>
       </div>
 
@@ -109,7 +109,7 @@
             <!-- level -->
             <div class="text-center text-danger fw-bold">
               <h3>
-                Level <?=$row["level"] ?>
+                レベル <?=$row["level"] ?>
               </h3>
             </div>
             <!-- end level -->
@@ -118,10 +118,10 @@
               <form class="info-form py-4" method="POST" action="add_process.php">
 
                 <a type="submit" href="/market_php/item_info.php?item_id=<?= $row["id"] ?>" class="btn btn-primary w-75 mb-4 fw-bold">
-                  Info
+                  詳細
                 </a>
                 <button type="submit" id="<?= $row["id"] ?>" class="add_inventory_btn btn btn-success w-75 mb-4 fw-bold" name="item_name" value="<?= $row["name"] ?>" data-item-id="<?= $row["id"] ?>">
-                  Add Pocket
+                  気に入り
                 </button>
 
               </form>
@@ -135,13 +135,13 @@
       <form method="get">
         <input type="hidden" name="search_item" value="<?= $search_item ?>">
         <nav aria-label="Page navigation example" class="my-5">
-          <h4 class="text-center mb-3">Pages <?=$page?> of <?= $total_pages ?></h4>
+          <h4 class="text-center mb-3">ページ <?=$page?> of <?= $total_pages ?></h4>
           <ul class="pagination justify-content-center">
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=1" tabindex="-1">First</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=1" tabindex="-1">最初</a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page - 1) ?>" tabindex="-1">Prvious</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page - 1) ?>" tabindex="-1">前へ</a>
             </li>
 
             <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
@@ -149,10 +149,10 @@
             <?php endfor ?>
 
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page + 1) ?>">Next</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page + 1) ?>">次へ</a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= $total_pages ?>">Last</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= $total_pages ?>">最後</a>
             </li>
           </ul>
         </nav>

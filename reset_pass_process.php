@@ -12,8 +12,9 @@
         $confirm_email = $_POST["confirm_email"];
 
         if (strcmp($email, $confirm_email) !== 0) {
-            $_SESSION["message"] = "Email does not match";
+            $_SESSION["message"] = "メールが一致していない";
             $_SESSION["msg_type"] = "danger";
+            header("location: reset_pass.php");
             exit();
         }else{
             $record = $conn -> query("SELECT email FROM user_data WHERE email='$email'");
@@ -35,10 +36,11 @@
                 $mail -> setFrom("tnguyen24494@gmail.com", "ADMIN");
                 $mail -> addAddress($email);
 
-                $mail -> Subject = "Reset Password";
+                $mail -> Subject = "パスワード再発行";
                 $message = "
-                    Hello. This mail is from rubik-collections.com
-                    Please use this number as a temporary password to log in
+                    こんにちは。こちらはルービックコレクションからのメールです。
+                    ログインの為、下記のパスワードをご利用ください。ログイン後、セキュリティー上の問題で、
+                    新しいパスワードを再設定をください。
                     $random_pass
                 ";
                 $mail -> Body = $message;
