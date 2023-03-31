@@ -15,16 +15,11 @@
           <li class="nav-item">
             <a class="nav-link text-light fw-bold" aria-current="page" href="/market_php/home.php">ホーム</a>
           </li>
-          <?php if (isset($_SESSION["is_login"]) and $_SESSION["is_login"] ===true ) : ?>
-          <li class="nav-item">
-            <a class="nav-link text-light fw-bold" href="/market_php/market.php">コレクション</a>
-          </li>
-          <?php else:?>
-            
+  
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="/market_php/login.php">コレクション</a>
+              <a class="nav-link text-light fw-bold" href="/market_php/market.php">コレクション</a>
             </li>
-          <?php endif ?>
+         
           <li class="nav-item">
             <a class="nav-link text-light fw-bold" href="/market_php/history.php">歴史</a>
           </li>
@@ -34,15 +29,15 @@
         <?php if (isset($_SESSION["user_id"])): ?>
           <?php
           $user_id = $_SESSION["user_id"];
-          $sql = "SELECT username FROM user_data WHERE id='$user_id'";
-          $result = mysqli_query($conn, $sql);
-          $row = mysqli_fetch_assoc($result);
+          $record = $conn -> query("SELECT username FROM user_data WHERE id='$user_id'");
+          
+          
           ?>
           <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
               <span id="tt" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                <a class="nav-link text-light fw-bold" href="dashboard.php">ようこそ, <?= $row["username"] ?> </a>
+                <a class="nav-link text-light fw-bold" href="dashboard.php">ようこそ, <?= $record -> fetch_assoc()["username"] ?> </a>
               </span>
             </li>
             <li class="nav-item">
