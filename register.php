@@ -4,27 +4,8 @@
 
   <?php include("navbar.php")?>
   <!-- !-- message -->
-  <?php
-  var_dump($_ENV);
-  if (isset($_SESSION["message"])) : ?>
-    <div class="">
-      <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
-        <?php echo $_SESSION["message"];  ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <?php unset($_SESSION["message"]); ?>
-    </div>
 
-  <?php endif ?>
-  <!-- end message -->
-
-  <br><br><br>
-
-  <?php if (isset($_SESSION["register_errors"])) {
-    $er = $_SESSION["register_errors"];
-    unset($_SESSION["register_errors"]);
-  }
-  ?>
+  
   <div class="container text-center card mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient"">
 
     <form action="register_process.php" method="POST">
@@ -32,54 +13,40 @@
     <h1 class="h3 mb-3 font-weight-normal">
       アカウント作成
     </h1>
+    <div id="text-err">
 
+    </div>
     <!-- Form Fields -->
     <!-- username -->
     <label for="inputUsername" class="sr-only mb-3">
       ユーザ名
     </label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="ユーザ名" name="username" required autofocus>
-    <?php if (isset($er["username"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["username"] ?>
-      </span>
-    <?php endif ?>
+    <input type="text" id="inputUsername" class="form-control" placeholder="ユーザ名" name="username"  autofocus>
+    
     <br>
 
     <!-- email -->
     <label for="inputEmail" class="sr-only mb-3">
       メール
     </label>
-    <input type="email" id="inputEmai" class="form-control" placeholder="メール" name="email" required autofocus>
+    <input type="email" id="inputEmai" class="form-control" placeholder="メール" name="email"  autofocus>
 
-    <?php if (isset($er["email"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["email"] ?>
-      </span>
-    <?php endif ?>
+    
     <br>
 
     <!-- password -->
     <label for="inputPassword1" class="sr-only mb-3">
       パスワード
     </label>
-    <input type="password" id="inputPassword1" class="form-control" placeholder="パスワード" name="password" required autofocus>
-    <?php if (isset($er["pass"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["pass"] ?>
-      </span>
-    <?php endif ?>
+    <input type="password" id="inputPassword1" class="form-control" placeholder="パスワード" name="password"  autofocus>
+    
     <br>
 
     <label for="inputPassword2" class="sr-only mb-3">
       パスワード確認用
     </label>
-    <input type="password" id="inputPassword2" class="form-control" placeholder="パスワード再入力" name="confirm_password" required autofocus>
-    <?php if (isset($er["pass"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["pass"] ?>
-      </span>
-    <?php endif ?>
+    <input type="password" id="inputPassword2" class="form-control" placeholder="パスワード再入力" name="confirm_password"  autofocus>
+    
     <br>
 
     <div class="checkbox mb-3">
