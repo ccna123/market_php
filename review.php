@@ -7,7 +7,7 @@
         FROM inventory 
         INNER JOIN user_data ON inventory.user_id = user_data.id
         INNER JOIN item ON inventory.item_id = item.id
-        WHERE inventory.item_id = '$item_id'
+        WHERE inventory.item_id = '$item_id' AND inventory.comments IS NOT NULL
         "
     );
 ?>
@@ -16,7 +16,7 @@
     <?php while ($row = $records -> fetch_assoc()): ?>  
         <div class="row">
             <div class="col-12" style="text-align: left;">
-                <h4><?=$row["username"] ?><span class="h5" style="margin-left: 2rem;">2023</span></h4>
+                <h4><?=$row["username"] ?><span class="h5" style="margin-left: 2rem;"><?php print(date("Y/m/d"))?></span></h4>
                 <h5><?=$row["rating_score"] ?></h5>
                 <p>
                 <?=$row["comments"] ?>

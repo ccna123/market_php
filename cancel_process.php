@@ -6,17 +6,15 @@
         $item_id = $_POST["item_id"];
         $user_id = $_SESSION["user_id"];
 
-        $record = $conn -> query("SELECT name FROM item WHERE id='$item_id'");
-        $row = $record -> fetch_assoc();
 
-        $conn -> query("DELETE FROM inventory WHERE item_id='$item_id'");
+        $conn -> query("DELETE FROM pocket WHERE item_id='$item_id' AND user_id='$user_id'");
         $data = array(
-            "message" => "Cancel ".$row["name"]." successfully",
+            "message" => "Cancel successfully",
             "status" => "Success"
         );
         $mess .='<div>
         <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
-          Cancel '.$row["name"].' successfully
+          Cancel successfully
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>'; 

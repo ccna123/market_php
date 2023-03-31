@@ -9,7 +9,6 @@
   </head>
   <body>
   <?php include("navbar.php");?>
-  <br><br>
   <!-- !-- message -->
   <?php
   if (isset($_SESSION["mess"])) : ?>

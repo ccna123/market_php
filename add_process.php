@@ -9,8 +9,8 @@
         $record = $conn -> query("SELECT name FROM item WHERE id='$item_id'");
         $row = $record -> fetch_assoc();
         
-        $conn -> query("INSERT INTO inventory (item_id, user_id, comments, rating_score, is_in_inventory) 
-        VALUES ('$item_id', '$user_id', null, 0, 1)");
+        $conn -> query("INSERT INTO pocket (item_id, user_id) 
+        VALUES ('$item_id', '$user_id')");
 
         $mess .='<div>
         <div class="alert alert-success alert-dismissible fade show w-100 " role="alert">

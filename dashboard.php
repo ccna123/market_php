@@ -29,7 +29,7 @@
     <?php
     include("dbconnect.php");
     $user_id = $_SESSION["user_id"];
-    $records = $conn->query("SELECT * FROM `item` WHERE id IN ( SELECT item_id FROM `inventory` WHERE inventory.user_id='$user_id');");
+    $records = $conn->query("SELECT * FROM `item` WHERE id IN ( SELECT item_id FROM `pocket` WHERE pocket.user_id='$user_id');");
 
     ?>
     <div class="tab-content" id="myTabContent">

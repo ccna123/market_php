@@ -10,7 +10,8 @@ if (!isset($_POST["item_id"]) or !isset($_POST["rating"]) or !isset($_POST["revi
     $review = $_POST["review"];
     $user_id = $_SESSION["user_id"];
 
-    $conn->query("UPDATE inventory SET comments='$review', rating_score='$rating' WHERE item_id='$item_id' AND user_id='$user_id'");
+    $conn->query("INSERT INTO `inventory` (`item_id`, `user_id`, `comments`, `rating_score`) 
+                VALUES ('$item_id', '$user_id', '$review', '$rating')");
 
     $records = $conn->query(
         "SELECT DISTINCT username, comments, rating_score, item.name 
