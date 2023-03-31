@@ -1,5 +1,4 @@
 <!doctype html>
-<?php session_start();?>
 <html lang="en">
 
 <head>
@@ -13,17 +12,6 @@
 <body>
   <?php include("navbar.php")?>
   <!-- message -->
-  <?php
-  if (isset($_SESSION["mess"])) : ?>
-    <div class="">
-      <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
-        <?php echo $_SESSION["mess"];  ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <?php unset($_SESSION["mess"]); ?>
-    </div>
-
-  <?php endif ?>
   <!-- end message -->
   <br><br><br>
 
@@ -34,19 +22,21 @@
       <h1 class="h3 mb-3 font-weight-normal">
         Please log in
       </h1>
-
+      <div id="text-err">
+      
+      </div>
       <br>
 
       <label for="inputUsername" class="sr-only mb-3">
         User Name
       </label>
-      <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
+      <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username"  autofocus>
       <br>
 
       <label for="inputPassword" class="sr-only mb-3">
         Password
       </label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" >
     
       <br>
 
@@ -55,7 +45,7 @@
         <a class="btn btn-sm btn-secondary" href="register.php">Register</a>
 
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
+      <button id="login" class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
     </form>
     <a href="create_new_pass.php" class="mt-4">Change Password ?</a>
     <a href="reset_pass.php" class="mt-4">Forgot Password ?</a>
@@ -67,7 +57,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-
+  <script src="js/login_ajax.js"></script>
 </body>
 
 </html>

@@ -1,15 +1,10 @@
 $(document).ready(function () {
-    
-    $("#tt").tooltip({
-        hide:true,
-        disable:true
-    });
 
     $(".add_inventory_btn").click(function (e) { 
         e.preventDefault();
         let item_id = $(this).data("item-id");
         let item_name = $(this).val();
-        console.log(item_name);
+
         $.ajax({
             type: "post",
             url: "add_process.php",
