@@ -4,9 +4,12 @@ require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv -> safeLoad();
+
 session_start();
 include("dbconnect.php");
-function check_valid($row, $username, $email, $password, $confirm_pass, $errors)
+function check_valid($row, $username, $email, $password, $confirm_pass)
 {
     $errors = array();
     if ($row["username"] != null && $row["username"] === $username) {
@@ -33,13 +36,13 @@ if (isset($_POST["register"])) {
     $confirm_pass = $_POST["confirm_password"];
 
 
-    $sql = "SELECT username, email FROM user_data WHERE username='$username' OR email='$email'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+    $record = $conn-> query("SELECT username, email FROM user_data WHERE username='$username' OR email='$email'");
+    $row = $record -> fetch_assoc();
 
-    $errors = check_valid($row, $username, $email, $password, $confirm_pass, $errors);
+    
+    if (mysqli_num_rows($record) === 0 ) {
 
-    if (count($errors) == 0) {
+       
 
         $token = hash("sha256", $username.$email.uniqid());
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
@@ -53,14 +56,14 @@ if (isset($_POST["register"])) {
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
+        
+        $mail->Username = $_ENV["GMAIL_USERNAME"];
+        $mail->Password = $_ENV["GMAIL_PASSWORD"];
 
-        $mail->Username = "tnguyen24494@gmail.com";
-        $mail->Password = "bcahvemlcltmxdue";
-
-        $mail->setFrom("tnguyen24494@gmail.com", "ADMIN");
+        $mail->setFrom($_ENV["GMAIL_USERNAME"], "ADMIN");
         $mail->addAddress($email);
 
-        $mail->Subject = "トークン発行";
+        $mail->Subject = "Token Member";
         $message = "
                     こんにちは。. こちらはルービックコレクションのサイトからのメールです。
                     商品の割引等の得を得られるため、下記のトークンを発行します。
@@ -69,10 +72,12 @@ if (isset($_POST["register"])) {
         $mail->Body = $message;
         $mail->send();
 
-        $_SESSION["message"] = "登録が成功した";
+        $_SESSION["mess"] = "登録が成功した";
         $_SESSION["msg_type"] = "success";
         header("location: login.php");
     } else {
+        
+        $errors = check_valid($row, $username, $email, $password, $confirm_pass);
         $_SESSION["register_errors"] = $errors;
         header("location: register.php");
     }

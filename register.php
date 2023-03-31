@@ -5,6 +5,7 @@
   <?php include("navbar.php")?>
   <!-- !-- message -->
   <?php
+  var_dump($_ENV);
   if (isset($_SESSION["message"])) : ?>
     <div class="">
       <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">

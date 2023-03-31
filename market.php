@@ -13,7 +13,7 @@
 
 <body>
   <?php include("navbar.php") ?>
-
+  <br><br>
   <div id="mess_section" class="fixed-top mt-5">
   <?php
   if (isset($_SESSION["mess"])) : ?>
