@@ -87,18 +87,6 @@
             </div>
             <hr>
 
-            <div class="container mb-4">
-              <div class="star-widget text-center">
-                <span class="stars">
-                  <i class="bi bi-star-fill h4"></i>
-                  <i class="bi bi-star-fill h4"></i>
-                  <i class="bi bi-star-fill h4"></i>
-                  <i class="bi bi-star-fill h4"></i>
-                  <i class="bi bi-star-fill h4"></i>
-                </span>
-              </div>
-              <input type="hidden" name="" class="avg_rating" value="4">
-            </div>
             <!-- level -->
             <div class="text-center text-danger fw-bold">
               <h3>
