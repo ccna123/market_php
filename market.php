@@ -1,5 +1,9 @@
 <?php include_once("header.php"); ?>
-
+<?php
+  if (!isset($_SESSION["user_id"])){
+    header("location: login.php");
+  };
+?>
 <body>
   <?php include("navbar.php") ?>
   <br><br>

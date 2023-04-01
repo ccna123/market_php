@@ -36,4 +36,99 @@
   
 </body>
 
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block fw-bold">
+      <h4>ルービックコレクション</h4>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="https://www.facebook.com/profile.php?id=100087506030640" class="me-4 text-reset">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="https://github.com/ccna123/market_php" class="me-4 text-reset">
+        <i class="bi bi-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            フロンドエンド
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">HTML</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">CSS</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">JAVASCRIPT</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">BOOTSTRAP</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            バックエンド
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">PHP</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">連絡先</h6>
+          <p class="pr-4">
+          <i class="bi bi-person-fill"></i>
+            グエンレニャットタン
+          </p>
+          <p class="pr-4">
+            <i class="bi bi-house-fill"></i>
+            岐阜県、関市
+          </p>
+          <p class="pr-4">
+          <i class="bi bi-envelope-fill"></i>
+            tnguyen24494@gmail.com
+          </p>
+          <p class="pr-4"><i class="bi bi-telephone-fill"></i> 080-2632-8344</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2023 Copyright:
+    <a class="text-reset fw-bold">THANH</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </html>
