@@ -119,7 +119,6 @@
         </div>
       <?php endwhile ?>
       <!-- end col -->
-
       <!-- pagination -->
       <form method="get">
         <input type="hidden" name="search_item" value="<?= $search_item ?>">

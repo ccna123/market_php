@@ -1,6 +1,7 @@
 <?php include_once("header.php"); ?>
   <?php include("navbar.php");?>
   <!-- !-- message -->
+  <br><br>
   <?php
   if (isset($_SESSION["mess"])) : ?>
     <div class="">

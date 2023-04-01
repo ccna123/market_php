@@ -4,7 +4,7 @@
   <?php include("navbar.php") ?>
   <div id="mess_section" class="fixed-top mt-5"></div>
 
-  <br><br>
+  <br><br><br>
   <!-- tab -->
   <div class="container">
     <h1 class="m-5 fw-bold header_page_title fw-bolder">ポケット</h1>
