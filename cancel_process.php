@@ -8,13 +8,9 @@
 
 
         $conn -> query("DELETE FROM pocket WHERE item_id='$item_id' AND user_id='$user_id'");
-        $data = array(
-            "message" => "Cancel successfully",
-            "status" => "Success"
-        );
         $mess .='<div>
         <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
-          Cancel successfully
+          キャンセルした。
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>'; 

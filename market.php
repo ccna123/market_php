@@ -1,19 +1,8 @@
-<!doctype html>
-<html lang="en">
-<?php session_start(); ?>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include_once("header.php"); ?>
 
 <body>
   <?php include("navbar.php") ?>
-
+  <br><br>
   <div id="mess_section" class="fixed-top mt-5">
   <?php
   if (isset($_SESSION["mess"])) : ?>
@@ -64,11 +53,11 @@
     <form class="form-inline my-2 my-lg-0" method="GET">
       <div class="row">
         <div class="col-lg-8 col-md-12 my-auto">
-          <input class="form-control mr-sm-2 me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 3rem;" name="search_item" value="">
+          <input class="form-control mr-sm-2 me-2" type="search" placeholder="検索" aria-label="Search" style=" height: 3rem;" name="search_item" value="">
         </div>
         <div class="col-lg-4 col-md-12">
           <input type="hidden" name="page" value="<?= $page ?>">
-          <button class="btn btn-success my-2 my-sm-4 w-100" type="submit" style="height: 3rem;">Search</button>
+          <button class="btn btn-success my-2 my-sm-4 w-100" type="submit" style="height: 3rem;">検索</button>
         </div>
       </div>
 
@@ -109,7 +98,7 @@
             <!-- level -->
             <div class="text-center text-danger fw-bold">
               <h3>
-                Level <?=$row["level"] ?>
+                レベル <?=$row["level"] ?>
               </h3>
             </div>
             <!-- end level -->
@@ -118,10 +107,10 @@
               <form class="info-form py-4" method="POST" action="add_process.php">
 
                 <a type="submit" href="/market_php/item_info.php?item_id=<?= $row["id"] ?>" class="btn btn-primary w-75 mb-4 fw-bold">
-                  Info
+                  詳細
                 </a>
                 <button type="submit" id="<?= $row["id"] ?>" class="add_inventory_btn btn btn-success w-75 mb-4 fw-bold" name="item_name" value="<?= $row["name"] ?>" data-item-id="<?= $row["id"] ?>">
-                  Add Pocket
+                  気に入り
                 </button>
 
               </form>
@@ -130,18 +119,17 @@
         </div>
       <?php endwhile ?>
       <!-- end col -->
-
       <!-- pagination -->
       <form method="get">
         <input type="hidden" name="search_item" value="<?= $search_item ?>">
         <nav aria-label="Page navigation example" class="my-5">
-          <h4 class="text-center mb-3">Pages <?=$page?> of <?= $total_pages ?></h4>
+          <h4 class="text-center mb-3">ページ <?=$page?> of <?= $total_pages ?></h4>
           <ul class="pagination justify-content-center">
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=1" tabindex="-1">First</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=1" tabindex="-1">最初</a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page - 1) ?>" tabindex="-1">Prvious</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page - 1) ?>" tabindex="-1">前へ</a>
             </li>
 
             <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
@@ -149,10 +137,10 @@
             <?php endfor ?>
 
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page + 1) ?>">Next</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= ($page + 1) ?>">次へ</a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= $total_pages ?>">Last</a>
+              <a class="page-link" href="?search_item=<?= $search_item ?>&page=<?= $total_pages ?>">最後</a>
             </li>
           </ul>
         </nav>
@@ -169,7 +157,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-  <script src="add_pocket.js" type="text/javascript"></script>
+  <script src="js/add_pocket.js" type="text/javascript"></script>
 </body>
 
 </html>

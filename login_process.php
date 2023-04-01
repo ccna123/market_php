@@ -1,28 +1,43 @@
 <?php
     session_start();
     include("dbconnect.php");
-    if (isset($_POST["login"])) {
-
-        $errors = array();
-        $username = htmlspecialchars(trim($_POST["username"]));
-        $password = $_POST["password"];
-        $_SESSION["is_login"] = false;
     
-        $record = $conn -> query("SELECT id, username, password FROM user_data WHERE username='$username'");
-        $row = $record -> fetch_assoc();
-    
-       if (!$row or !password_verify($password, $row["password"])) {
-            $_SESSION["mess"] = "Wrong username or password";
-            $_SESSION["msg_type"] = "danger";
-            header("location: login.php");
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
-       }else {
-            $_SESSION["mess"] = "Login sucessfully";
-            $_SESSION["msg_type"] = "success";
-            $_SESSION["user_id"] = $row["id"];
-            $_SESSION["is_login"] = true;
-            header("location: market.php");
+    if (!empty($username) && !empty($password)) {
+
+        //check username and password is correct
+        $record = $conn -> query("SELECT username, password FROM user_data WHERE username='$username'");
+        if (mysqli_num_rows($record) === 0) {
+            echo '
+            <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+            ユーザ名が間違っています。
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
             exit;
+        }else if(!password_verify($password, $record-> fetch_assoc()["password"])){
+            echo '
+            <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                パスワードが間違っています。
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+            exit;
+        }else{
+            
+            $record = $conn -> query("SELECT id FROM user_data WHERE username='$username'");
+            $_SESSION["user_id"] = $record -> fetch_assoc()["id"];
+            echo "success";
+            exit;
+
         }
+        
+    }else{
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+        すべてのフィルドが入力必須です。
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        exit;
     }
 ?>

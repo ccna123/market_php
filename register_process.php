@@ -6,74 +6,92 @@ use PHPMailer\PHPMailer\SMTP;
 
 session_start();
 include("dbconnect.php");
-function check_valid($row, $username, $email, $password, $confirm_pass, $errors)
-{
-    $errors = array();
-    if ($row["username"] != null && $row["username"] === $username) {
-        $errors["username"] =  "Username already exists";
-    }
 
-    if ($row["email"] != null && $row["email"] === $email) {
-        $errors["email"] = "Email already exists";
-    }
+function send_mail($token, $mail, $email){
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
 
-    if ($password != $confirm_pass) {
-        $errors["pass"] = "Password do not match";
-    }
-    return $errors;
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
+
+    $mail->Username = "tnguyen24494@gmail.com";
+    $mail->Password = "bcahvemlcltmxdue";
+
+    $mail->setFrom("tnguyen24494@gmail.com", "ADMIN");
+    $mail->addAddress($email);
+
+    $mail->Subject = "Member Token";
+    $message = "
+                こんにちは。. こちらはルービックコレクションサイトのメールです。
+                クーポンとして下記のトークンをご利用ください。
+                $token
+            ";
+    $mail->Body = $message;
+    $mail->send();
 }
+    
+    $username = mysqli_real_escape_string($conn, $_POST["username"]); 
+    $email = mysqli_real_escape_string($conn, $_POST["email"]); 
+    $password = mysqli_real_escape_string($conn, $_POST["password"]); 
+    $confirm_password = mysqli_real_escape_string($conn, $_POST["confirm_password"]); 
 
+    if (!empty($username) && !empty($email) && !empty($password) && !empty($confirm_password) ) {
+        $record = $conn -> query("SELECT username FROM user_data WHERE username='$username'");
+        
+        // check username already exists
+        if (mysqli_num_rows($record) > 0) {
+            echo '
+            <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+            ユーザ名が既に登録された。
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+        exit;
+        }
+        
+        // check email valid 
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $record = $conn -> query("SELECT username, email FROM user_data WHERE email='$email'");
+            if (mysqli_num_rows($record) > 0) {
+                echo '
+                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                    メールが既に登録された。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+                exit;
+            }
+        }else{
+            echo '
+                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                    メールフォマードが正しくない。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+                exit;
+        }
 
-
-if (isset($_POST["register"])) {
-
-    $username = htmlspecialchars(trim($_POST["username"]));
-    $email = htmlspecialchars(trim($_POST["email"]));
-    $password = $_POST["password"];
-    $confirm_pass = $_POST["confirm_password"];
-
-
-    $sql = "SELECT username, email FROM user_data WHERE username='$username' OR email='$email'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-
-    $errors = check_valid($row, $username, $email, $password, $confirm_pass, $errors);
-
-    if (count($errors) == 0) {
-
-        $token = hash("sha256", $username.$email.uniqid());
+        //check password match
+        if (strcmp($password, $confirm_password) !==0 ) {
+            echo '
+                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                    パスワードが一致していない。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+                exit;
+        }
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO user_data (username, password, email, token) VALUES ('$username', '$hash_pass', '$email', '$token')";
-        $result = mysqli_query($conn, $sql);
-
+        $conn -> query("INSERT INTO user_data (username, password, email) VALUES ('$username', '$hash_pass', '$email')");
+        
+        $token = hash("sha256", "$username"."$email");
         $mail = new PHPMailer(true);
-        $mail->isSMTP();
-        $mail->SMTPAuth = true;
+        send_mail($token, $mail, $email);
+        echo "success";
 
-        $mail->Host = "smtp.gmail.com";
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
-        $mail->Username = "tnguyen24494@gmail.com";
-        $mail->Password = "bcahvemlcltmxdue";
-
-        $mail->setFrom("tnguyen24494@gmail.com", "ADMIN");
-        $mail->addAddress($email);
-
-        $mail->Subject = "Member Token";
-        $message = "
-                    Hello. This mail is from rubik-collections.com
-                    Please use this token as a ticket for discount when buying products
-                    $token
-                ";
-        $mail->Body = $message;
-        $mail->send();
-
-        $_SESSION["message"] = "Register successfully";
-        $_SESSION["msg_type"] = "success";
-        header("location: login.php");
-    } else {
-        $_SESSION["register_errors"] = $errors;
-        header("location: register.php");
+        
+    }else{
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+        すべてのフィルドが入力必須。
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        exit;
     }
-}

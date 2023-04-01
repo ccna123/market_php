@@ -1,99 +1,59 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php include("header.php"); ?>
 
 <body>
 
   <?php include("navbar.php")?>
   <!-- !-- message -->
-  <?php
-  if (isset($_SESSION["message"])) : ?>
-    <div class="">
-      <div class="alert alert-<?= $_SESSION["msg_type"] ?> alert-dismissible fade show w-100 " role="alert">
-        <?php echo $_SESSION["message"];  ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <?php unset($_SESSION["message"]); ?>
-    </div>
 
-  <?php endif ?>
-  <!-- end message -->
-
-  <br><br><br>
-
-  <?php if (isset($_SESSION["register_errors"])) {
-    $er = $_SESSION["register_errors"];
-    unset($_SESSION["register_errors"]);
-  }
-  ?>
+  
   <div class="container text-center card mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient"">
 
     <form action="register_process.php" method="POST">
 
     <h1 class="h3 mb-3 font-weight-normal">
-      Please Create your Account
+      アカウント作成
     </h1>
+    <div id="text-err">
 
+    </div>
     <!-- Form Fields -->
     <!-- username -->
     <label for="inputUsername" class="sr-only mb-3">
-      User Name
+      ユーザ名
     </label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-    <?php if (isset($er["username"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["username"] ?>
-      </span>
-    <?php endif ?>
+    <input type="text" id="inputUsername" class="form-control" placeholder="ユーザ名" name="username"  autofocus>
+    
     <br>
 
     <!-- email -->
     <label for="inputEmail" class="sr-only mb-3">
-      Email
+      メール
     </label>
-    <input type="email" id="inputEmai" class="form-control" placeholder="Email" name="email" required autofocus>
+    <input type="email" id="inputEmai" class="form-control" placeholder="メール" name="email"  autofocus>
 
-    <?php if (isset($er["email"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["email"] ?>
-      </span>
-    <?php endif ?>
+    
     <br>
 
     <!-- password -->
     <label for="inputPassword1" class="sr-only mb-3">
-      Password
+      パスワード
     </label>
-    <input type="password" id="inputPassword1" class="form-control" placeholder="Password" name="password" required autofocus>
-    <?php if (isset($er["pass"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["pass"] ?>
-      </span>
-    <?php endif ?>
+    <input type="password" id="inputPassword1" class="form-control" placeholder="パスワード" name="password"  autofocus>
+    
     <br>
 
     <label for="inputPassword2" class="sr-only mb-3">
-      Password Confirmation
+      パスワード確認用
     </label>
-    <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" name="confirm_password" required autofocus>
-    <?php if (isset($er["pass"])) : ?>
-      <span class="mt-3 error">
-        <?= $er["pass"] ?>
-      </span>
-    <?php endif ?>
+    <input type="password" id="inputPassword2" class="form-control" placeholder="パスワード再入力" name="confirm_password"  autofocus>
+    
     <br>
 
     <div class="checkbox mb-3">
-      <h6>Already have an Account?</h6>
-      <a class="btn btn-sm btn-secondary" href="login.php">Login</a>
+      <h6>アカウントを既に持っている？</h6>
+      <a class="btn btn-sm btn-secondary" href="login.php">ログイン</a>
     </div>
-    <button type="submit" name="register" class="btn btn-lg btn-primary btn-block">Create Account</button>
+    <button id="register" type="submit" name="register" class="btn btn-lg btn-primary btn-block">アカウント作成</button>
     </form>
   </div>
 
@@ -102,7 +62,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-
+  <script src="js/register_ajax.js"></script>
 </body>
 
 </html>

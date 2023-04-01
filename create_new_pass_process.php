@@ -8,13 +8,15 @@
         $email = $_SESSION["email"];
 
         if (strcmp($new_pass, $new_confirm_pass) !==0 ) {
-            $_SESSION["new_pass_message"] = "Password does not match";
+            $_SESSION["new_pass_message"] = "パスワードが一致していない。";
             $_SESSION["msg_type"] = "danger";
+            header("location: create_new_pass.php");
+            exit;
             
         }else{
-            
-            $conn -> query("UPDATE user_data SET password='$new_pass' WHERE email='$email'");
-            $_SESSION["new_pass_message"] = "Password changed successfully";
+            $hash_pass = password_hash($new_pass, PASSWORD_DEFAULT);
+            $conn -> query("UPDATE user_data SET password='$hash_pass' WHERE email='$email'");
+            $_SESSION["new_pass_message"] = "パスワードが変更された。";
             $_SESSION["msg_type"] = "success";
             header("location: create_new_pass.php");
             exit;
