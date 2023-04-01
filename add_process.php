@@ -24,14 +24,12 @@
 
           $conn -> query("SELECT pocket.item_id, item.name FROM pocket INNER JOIN item ON pocket.item_id = '$item_id';");
           $row = $record -> fetch_assoc();
-        $mess .='<div>
+          echo '<div>
         <div class="alert alert-success alert-dismissible fade show w-100 " role="alert">
            ポケットに入れた
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      </div>'; 
-
-        echo $mess;
+      </div>';
         exit;
         }
     }

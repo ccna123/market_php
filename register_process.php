@@ -79,9 +79,9 @@ function send_mail($token, $mail, $email){
                 exit;
         }
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-        $conn -> query("INSERT INTO user_data (username, password, email) VALUES ('$username', '$hash_pass', '$email')");
-        
         $token = hash("sha256", "$username"."$email");
+        $conn -> query("INSERT INTO user_data (username, password, email, token) VALUES ('$username', '$hash_pass', '$email', '$token')");
+        
         $mail = new PHPMailer(true);
         send_mail($token, $mail, $email);
         echo "success";
