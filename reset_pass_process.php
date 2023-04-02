@@ -10,61 +10,75 @@
     include("dbconnect.php");
     session_start();
 
-    if (isset($_POST["email"]) and isset($_POST["confirm_email"])) {
+    if (!empty($_POST["email"]) and !empty($_POST["confirm_email"])) {
         
         $email = $_POST["email"];
         $confirm_email = $_POST["confirm_email"];
 
+        // check email are the same
         if (strcmp($email, $confirm_email) !== 0) {
-            $_SESSION["message"] = "メールが一致していない";
-            $_SESSION["msg_type"] = "danger";
-            header("location: reset_pass.php");
+            echo '
+                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                    メールが一致していない。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
             exit();
-        }else{
-            $record = $conn -> query("SELECT email FROM user_data WHERE email='$email'");
-            if ($record -> num_rows > 0) {
+        }
+        
+        // check email valid 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo '
+                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                メールフォマードが正しくない。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+                exit;
+        }
+        
+        $record = $conn -> query("SELECT username, email FROM user_data WHERE email='gotraporti@gufum.com'");
                 
-                $random_pass = uniqid();
+        $random_pass = hash("sha256", $record->fetch_assoc()["username"].$email.uniqid());
 
-                $mail = new PHPMailer(true);
-                $mail -> isSMTP();
-                $mail -> SMTPAuth = true;
+        $mail = new PHPMailer(true);
+        $mail -> isSMTP();
+        $mail -> SMTPAuth = true;
 
-                $mail -> Host = "smtp.gmail.com";
-                $mail -> SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail -> Port = 587;
+        $mail -> Host = "smtp.gmail.com";
+        $mail -> SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail -> Port = 587;
 
-                $mail -> Username = getenv("GMAIL_USERNAME");
-                $mail -> Password = getenv("GMAIL_PASSWORD");
-                $username = getenv("GMAIL_USERNAME");
+        $mail -> Username = getenv("GMAIL_USERNAME");
+        $mail -> Password = getenv("GMAIL_PASSWORD");
+        $username = getenv("GMAIL_USERNAME");
 
-                $mail -> setFrom($username, "ADMIN");
-                $mail -> addAddress($email);
+        $mail -> setFrom($username, "ADMIN");
+        $mail -> addAddress($email);
 
-                $mail -> Subject = "パスワード再発行";
-                $message = "
+        $mail -> Subject = "パスワード再発行";
+        $message = "
                     こんにちは。こちらはルービックコレクションからのメールです。
-                    ログインの為、下記のパスワードをご利用ください。ログイン後、セキュリティー上の問題で、
-                    新しいパスワードを再設定をください。
+                    ログインの為、下記のパスワードをご利用ください。
                     $random_pass
                 ";
-                $mail -> Body = $message;
-                $mail -> send();
+        $mail -> Body = $message;
+        $mail -> send();
 
-                $hash_pass = password_hash($random_pass, PASSWORD_DEFAULT);
-                $conn -> query("UPDATE user_data SET password = '$hash_pass' WHERE email='$email'");
+        $conn -> query("UPDATE user_data SET token = '$random_pass' WHERE email='$email'");
 
-                $_SESSION["message"] = "一時的なパスワードが送信させたので、メールをご確認ください。";
-                $_SESSION["msg_type"] = "success";
-                $_SESSION["email"] = $email;
-                header("location: reset_pass.php");
-            }else{
+        echo '
+                <div class="alert alert-success alert-dismissible fade show w-100 " role="alert">
+                    パスワードがリセットされた。メールをご確認ください。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+        exit;
+            
+    }else{
                 
-                $_SESSION["message"] = "メールが存在しない。";
-                $_SESSION["msg_type"] = "danger";
-                header("location: reset_pass.php");
-                exit;
-            }
+            echo '
+            <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+            すべてのフィルドが入力必須。
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+            exit;
         }
-    }
 ?>

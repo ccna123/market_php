@@ -30,22 +30,6 @@
       メール
     </label>
     <input type="email" id="inputEmai" class="form-control" placeholder="メール" name="email"  autofocus>
-
-    
-    <br>
-
-    <!-- password -->
-    <label for="inputPassword1" class="sr-only mb-3">
-      パスワード
-    </label>
-    <input type="password" id="inputPassword1" class="form-control" placeholder="パスワード" name="password"  autofocus>
-    
-    <br>
-
-    <label for="inputPassword2" class="sr-only mb-3">
-      パスワード確認用
-    </label>
-    <input type="password" id="inputPassword2" class="form-control" placeholder="パスワード再入力" name="confirm_password"  autofocus>
     
     <br>
 

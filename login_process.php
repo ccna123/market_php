@@ -8,7 +8,7 @@
     if (!empty($username) && !empty($password)) {
 
         //check username and password is correct
-        $record = $conn -> query("SELECT username, password FROM user_data WHERE username='$username'");
+        $record = $conn -> query("SELECT username, token FROM user_data WHERE username='$username'");
         if (mysqli_num_rows($record) === 0) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
@@ -16,7 +16,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
             exit;
-        }else if(!password_verify($password, $record-> fetch_assoc()["password"])){
+        }else if(strcmp($password, $record -> fetch_assoc()["token"]) !== 0){
             echo '
             <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
                 パスワードが間違っています。

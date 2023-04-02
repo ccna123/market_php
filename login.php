@@ -38,7 +38,6 @@
       </div>
       <button id="login" class="btn btn-lg btn-primary btn-block" type="submit" name="login">ログイン</button>
     </form>
-    <a href="create_new_pass.php" class="mt-4">パスワードを変更</a>
     <a href="reset_pass.php" class="mt-4">パスワードを忘れた？</a>
   </div>
   </div>

@@ -24,7 +24,7 @@ function send_mail($token, $mail, $email){
     $mail->Subject = "Member Token";
     $message = "
                 こんにちは。. こちらはルービックコレクションサイトのメールです。
-                クーポンとして下記のトークンをご利用ください。
+                ログイン用のパスワードとして下記のトークンをご利用ください。
                 $token
             ";
     $mail->Body = $message;
@@ -33,10 +33,8 @@ function send_mail($token, $mail, $email){
     
     $username = mysqli_real_escape_string($conn, $_POST["username"]); 
     $email = mysqli_real_escape_string($conn, $_POST["email"]); 
-    $password = mysqli_real_escape_string($conn, $_POST["password"]); 
-    $confirm_password = mysqli_real_escape_string($conn, $_POST["confirm_password"]); 
 
-    if (!empty($username) && !empty($email) && !empty($password) && !empty($confirm_password) ) {
+    if (!empty($username) && !empty($email) ) {
         $record = $conn -> query("SELECT username FROM user_data WHERE username='$username'");
         
         // check username already exists
@@ -70,17 +68,8 @@ function send_mail($token, $mail, $email){
         }
 
         //check password match
-        if (strcmp($password, $confirm_password) !==0 ) {
-            echo '
-                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
-                    パスワードが一致していない。
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-                exit;
-        }
-        $hash_pass = password_hash($password, PASSWORD_DEFAULT);
         $token = hash("sha256", "$username"."$email");
-        $conn -> query("INSERT INTO user_data (username, password, email, token) VALUES ('$username', '$hash_pass', '$email', '$token')");
+        $conn -> query("INSERT INTO user_data (username, email, token) VALUES ('$username', '$email', '$token')");
         
         $mail = new PHPMailer(true);
         send_mail($token, $mail, $email);
