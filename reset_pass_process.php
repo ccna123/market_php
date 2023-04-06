@@ -14,6 +14,17 @@
         
         $email = $_POST["email"];
         $confirm_email = $_POST["confirm_email"];
+        $record = $conn -> query("SELECT username, email FROM user_data WHERE email='$email'");
+        
+        //check email is in database
+        if (mysqli_num_rows($record) === 0) {
+            echo '
+                <div class="alert alert-danger alert-dismissible fade show w-100 " role="alert">
+                    メールが存在しない。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            exit();
+        }
 
         // check email are the same
         if (strcmp($email, $confirm_email) !== 0) {
@@ -35,7 +46,6 @@
                 exit;
         }
         
-        $record = $conn -> query("SELECT username, email FROM user_data WHERE email='gotraporti@gufum.com'");
                 
         $random_pass = hash("sha256", $record->fetch_assoc()["username"].$email.uniqid());
 
