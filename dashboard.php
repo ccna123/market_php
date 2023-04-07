@@ -28,7 +28,7 @@
           <!-- col item -->
           <div class="row item_inventory">
             <?php while ($row = $records->fetch_assoc()) : ?>
-              <div class="col-xl-3 col-lg-4 col-md-3 col-sm-12">
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3 text-center">
 
                 <div id="<?= $row["id"] ?>" class="card text-dark item_card" style="width: 18rem; min-height: 100%;" data-item-id="<?= $row["id"] ?>">
                   <img src="<?= $row["image_url"] ?>" class="card-img-top">

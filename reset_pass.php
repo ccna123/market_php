@@ -26,7 +26,7 @@
       <h1 class="h3 mb-3 font-weight-normal">
         パスワード再発行
       </h1>
-      <div id="text-err">
+      <div id="message">
 
       </div>
       <br>

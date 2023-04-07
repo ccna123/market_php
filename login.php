@@ -8,13 +8,13 @@
   <br><br>
   <div class="container card text-center mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient">
 
-    <form action="login_process.php" method="POST">
+    <form method="POST">
 
       <h1 class="h3 mb-3 font-weight-normal">
         ログイン
       </h1>
 
-      <div id="text-err">
+      <div id="message">
 
       </div>
 

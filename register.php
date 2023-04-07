@@ -8,12 +8,12 @@
   
   <div class="container text-center card mt-5 text-dark px-5 py-5 w-75 .bg-light.bg-gradient"">
 
-    <form action="register_process.php" method="POST">
+    <form method="POST">
 
     <h1 class="h3 mb-3 font-weight-normal">
       アカウント作成
     </h1>
-    <div id="text-err">
+    <div id="message">
 
     </div>
     <!-- Form Fields -->

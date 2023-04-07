@@ -7,7 +7,7 @@ if (empty($_POST["review_area"])) {
     $_SESSION["msg_type"] = "danger";
     header("location: item_info.php?item_id=$item_id");
 } else {
-    $review = mysqli_real_escape_string($conn, $_POST["review_area"]);
+    $review = htmlspecialchars($_POST["review_area"]);
     $user_id = $_SESSION["user_id"];
     
     $conn->query("INSERT INTO `inventory` (`item_id`, `user_id`, `comments`) 
