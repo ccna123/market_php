@@ -9,6 +9,7 @@ $(document).ready(function () {
     dataType: "html",
     success: function (response) {
         if (response == "success") {
+            $("#message").empty();
             $("#message").append(`
                 <div class="alert alert-success alert-dismissible fade show w-100 " role="alert">
                     登録が成功した。<a href="login.php">ログイン</a>

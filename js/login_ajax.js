@@ -9,6 +9,7 @@ $(document).ready(function () {
         dataType: "html",
         success: function (response) {
             if (response == "success") {
+                $("#message").empty();
                 $("#message").append(`
                     <div class="alert alert-success alert-dismissible fade show w-100 " role="alert">
                         ログインが成功した。<a href="market.php">コレクション</a>
