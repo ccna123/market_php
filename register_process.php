@@ -4,6 +4,9 @@ require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv -> safeLoad();
+
 session_start();
 include("dbconnect.php");
 
