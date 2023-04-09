@@ -15,10 +15,11 @@ function send_mail($token, $mail, $email){
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
-    $mail->Username = "tnguyen24494@gmail.com";
-    $mail->Password = "bcahvemlcltmxdue";
+    $mail -> Username = getenv("GMAIL_USERNAME");
+    $mail -> Password = getenv("GMAIL_PASSWORD");
+    $username = getenv("GMAIL_USERNAME");
 
-    $mail->setFrom("tnguyen24494@gmail.com", "ADMIN");
+    $mail->setFrom($username, "ADMIN");
     $mail->addAddress($email);
 
     $mail->Subject = "Member Token";
